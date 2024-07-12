@@ -1,16 +1,21 @@
-const express = require('express');
-const server = express();
-const usuarios = require('./src/data/dados.json')
-const cors = require('cors');
-
-server.get("/", cors(), (req, res) => {
-    return res.json({mensagem: "Nossa api está ok"})
-})
-
-server.get("/usuarios",cors(), (req, res,) => {
-    return res.json(usuarios)
-})
-
-server.listen(3000, () => {
-    console.log('OK');
-});
+const jsonServer = require("json-server");
+const auth = require("json-server-auth");
+const cors = require("cors");
+const port = process.env.PORT || 3001; 
+const routes = require('./routes.json');
+    
+const app = jsonServer.create();
+const router = jsonServer.router("dados.json");
+    
+app.db = router.db;
+    
+const rules = auth.rewriter(
+routes);
+    
+app.use(cors());
+app.use(rules);
+app.use(auth);
+app.use(router);
+app.listen(port);
+    
+console.log("Server is running on port:", port);
