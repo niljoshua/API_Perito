@@ -5,14 +5,14 @@ const port = process.env.PORT || 3001;
     
 const app = jsonServer.create();
 const router = jsonServer.router("dados.json");
-const dbcotas = jsonServer.router("cotas.json");
     
-app.db = router.db, dbcotas.db;
+app.db = router.db;
+    
+
     
 app.use(cors());
 app.use(auth);
 app.use(router);
-app.use(dbcotas);
 app.listen(port);
     
 console.log("Server is running on port:", port);
