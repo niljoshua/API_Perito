@@ -6,10 +6,10 @@ const routes = require('./routes.json');
     
 const app = jsonServer.create();
 const router = jsonServer.router("dados.json");
-const dbcotas = jsonServer.router("cotas.json");
+const dbcotas = jsonServer.dbcotas("cotas.json");
     
-app.db = router.db;
-app.db = dbcotas.db;
+app.db = router.db, dbcotas.db;
+
     
 const rules = auth.rewriter(
 routes);
