@@ -8,7 +8,13 @@ const router = jsonServer.router("dados.json");
     
 app.db = router.db;
     
+let items = {};
 
+app.post('/db_cotas', (req, res) => {
+  const { id, n_cotas, valor_cotas } = req.body;
+  items[id] = { n_cotas, valor_cotas };
+  res.status(200).send('Item cadastrado ou atualizado com sucesso!');
+});
     
 app.use(cors());
 app.use(auth);
