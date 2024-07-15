@@ -6,6 +6,7 @@ const routes = require('./routes.json');
     
 const app = jsonServer.create();
 const router = jsonServer.router("dados.json");
+const dbcotas = jsonServer.router("cotas.json");
     
 app.db = router.db;
     
@@ -16,6 +17,7 @@ app.use(cors());
 app.use(rules);
 app.use(auth);
 app.use(router);
+app.use(dbcotas);
 app.listen(port);
     
 console.log("Server is running on port:", port);
