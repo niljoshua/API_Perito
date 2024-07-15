@@ -9,6 +9,7 @@ const router = jsonServer.router("dados.json");
 const dbcotas = jsonServer.router("cotas.json");
     
 app.db = router.db;
+app.db = dbcotas.db;
     
 const rules = auth.rewriter(
 routes);
