@@ -1,7 +1,11 @@
 {
     "usuarios": [
+      {},
       {
-        
+        "id": 0,
+        "name": "",
+        "phone": "",
+        "cotas": []
       }
     ],
     "db_cotas": [
